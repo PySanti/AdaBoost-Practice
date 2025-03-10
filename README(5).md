@@ -35,7 +35,7 @@ Asthma 2\
 KidneyDisease 2\
 SkinCancer 2
 
-Por lo tanto, si utilizasemos OneHotEncoding, las columnas aumentarian de 18 a 66. Un numero bastante razonable.
+Por lo tanto, si utilizasemos OneHotEncoding, las columnas aumentarian de 18 a 52. Un numero bastante razonable.
 
 
 3- Estudio de desequilibrio de datos: no se realizara.
@@ -44,9 +44,10 @@ Por lo tanto, si utilizasemos OneHotEncoding, las columnas aumentarian de 18 a 6
 
 5- Estudio de distribucion gaussiana de los datos: no se realizara.
 
-6- Extraccion y/o seleccion de caracteristicas.
+6- Extraccion y/o seleccion de caracteristicas: en el proceso de seleccion de caracteristicas se concluyeron los siguientes resultados.
 
-7- Estudio de casos anomalos.
+
+7- Estudio de casos anomalos: se utilizara solo sobre el conjunto de entrenamiento.
 
 8- Scalers.
 
