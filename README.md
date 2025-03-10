@@ -20,19 +20,19 @@ Shape del dataset : 319795 x 18
 
 2- Manejo de variables categoricas: la lista de columnas categoricas con su cantidad de categoricas es la siguiente.
 
-HeartDisease 2
-Smoking 2
-AlcoholDrinking 2
-Stroke 2
-DiffWalking 2
-Sex 2
-AgeCategory 13
-Race 6
-Diabetic 4
-PhysicalActivity 2
-GenHealth 5
-Asthma 2
-KidneyDisease 2
+HeartDisease 2\
+Smoking 2\
+AlcoholDrinking 2\
+Stroke 2\
+DiffWalking 2\
+Sex 2\
+AgeCategory 13\
+Race 6\
+Diabetic 4\
+PhysicalActivity 2\
+GenHealth 5\
+Asthma 2\
+KidneyDisease 2\
 SkinCancer 2
 
 Por lo tanto, si utilizasemos OneHotEncoding, las columnas aumentarian de 18 a 66. Un numero bastante razonable.
