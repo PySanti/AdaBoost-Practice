@@ -35,7 +35,7 @@ def basic_preprocess(df, target, scaler=False, pca=False, outliers=False):
     if scaler or pca:
         steps = []
         if scaler: steps.append(("scaler", CustomScaler(not_cat_columns)))
-        if pca: steps.append(("pca", PCA(n_components=0.999)))
+        if pca: steps.append(("pca", PCA(n_components=0.98)))
         pipe = Pipeline(steps=steps)
         X_train = pd.DataFrame(pipe.fit_transform(X_train), index=X_train.index)
         X_val   = pd.DataFrame(pipe.transform(X_val), index=X_val.index)
@@ -54,8 +54,5 @@ def basic_preprocess(df, target, scaler=False, pca=False, outliers=False):
     df_train = pd.concat([X_train, df_train[target]], axis=1)
     df_val = pd.concat([X_val, df_val[target]], axis=1)
     df_test = pd.concat([X_test, df_test[target]], axis=1)
-
-
-
 
     return [df_train, df_test, df_val]
