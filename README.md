@@ -20,7 +20,6 @@ Shape del dataset : 319795 x 18
 
 2- Manejo de variables categoricas: la lista de columnas categoricas con su cantidad de categoricas es la siguiente.
 
-HeartDisease 2\
 Smoking 2\
 AlcoholDrinking 2\
 Stroke 2\
@@ -35,6 +34,8 @@ Asthma 2\
 KidneyDisease 2\
 SkinCancer 2
 
+Son 13 columnas categoricas y la cantidad de categorias (y por lo tanto de columnas nuevas) es 46.
+
 Por lo tanto, si utilizasemos OneHotEncoding, las columnas aumentarian de 18 a 52. Un numero bastante razonable.
 
 
@@ -44,10 +45,17 @@ Por lo tanto, si utilizasemos OneHotEncoding, las columnas aumentarian de 18 a 5
 
 5- Estudio de distribucion gaussiana de los datos: no se realizara.
 
-6- Extraccion y/o seleccion de caracteristicas: en el proceso de seleccion de caracteristicas se concluyeron los siguientes resultados.
+6- Extraccion y/o seleccion de caracteristicas: se incluyo en el pipeline de manera intrinseca la seleccion de caracteristicas utilizando el transformador `BestFeatures` y se agrego la posibilidad de generar el dataset con `PCA`.
 
+Despues de ejecutar el proceso de seleccion de caracteristicas, se redujo la dimensionalidad a 23 caracteristicas.
+
+Despues de ejecutar PCA, se redujo la dimensionalidad a 17 caracteristicas. 
 
 7- Estudio de casos anomalos: se utilizara solo sobre el conjunto de entrenamiento.
+
+Despues de ejecutar el proceso de estudio de casos anomalos sobre el conjunto de entrenamieto utilizando el algoritmo `Isolation Forest` con 400 arboles, se detectaron 16% de casos anomalos.
+
+
 
 8- Scalers.
 

@@ -9,7 +9,6 @@ target = "HeartDisease"
 for outliers in [True, False]:
     for scaler in [True, False]:
         for pca in [True, False]:
-            filename = generate_filename(scaler, pca, outliers)
             [df_train, df_test, df_val] = basic_preprocess(
                 pd.read_csv("./data/data.csv"), 
                 target, 
