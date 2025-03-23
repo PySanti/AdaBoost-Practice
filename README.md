@@ -86,6 +86,9 @@ AdaBoost se suele implementar con arboles de decision por que son modelos "debil
 
 Independientemente del caso, aca los resultados para cada variante de preprocesamiento:
 
+Importante: destacar que las precisiones son el *f1_score* para la clase positiva (minoritaria).
+
+
 ### Naive Bayes
 
 | Variante de preprocesamiento 	|                                                                            Naive Bayes                                                                           	| Boosted Naive Bayes                                                           	|
@@ -113,3 +116,15 @@ Independientemente del caso, aca los resultados para cada variante de preprocesa
 | + Scaler; - PCA; - Outliers  	| Mejor combinacion de hiperparametros : {'C': 0.001, 'class_weight': 'balanced', 'max_iter': 500, 'penalty': 'l2', 'solver': 'saga'}<br>    Performance en train : 0.34<br>    Performance en test : 0.34      	| Performance boosted en train : 0.17<br>    Performance boosted en test : 0.17 	|
 | - Scaler; + PCA; - Outliers  	| Mejor combinacion de hiperparametros : {'C': 0.001, 'class_weight': 'balanced', 'max_iter': 500, 'penalty': 'l1', 'solver': 'saga'}<br>    Performance en train : 0.23<br>    Performance en test : 0.23      	| Performance boosted en train : 0.00<br>    Performance boosted en test : 0.00 	|
 | - Scaler; - PCA; - Outliers  	| Mejor combinacion de hiperparametros : {'C': 0.001, 'class_weight': 'balanced', 'max_iter': 100, 'penalty': 'l2', 'solver': 'liblinear'}<br>    Performance en train : 0.33<br>    Performance en test : 0.33 	| Performance boosted en train : 0.16<br>    Performance boosted en test : 0.17 	|
+
+
+
+Cómo vemos, de por sí ninguno de los algoritmos por separado logró hacer buenas predicciones, a qué se debe esto? Esta situación puede estar siendo causada por varias razones:
+
+1- Los algoritmos, al construir límites de decisión lineales, no son capaces de capturar los patrones entre los datos (la más probable).
+
+2- Está habiendo algún error importante en el proceso de preprocesamiento (menos probable).
+
+3- El hecho de que el conjunto de datos esté desequilibrado afecta negativamente a estos algoritmos concretos. (muy probable)
+
+En un caso de uso real, lo primero que haría sería implementar SVC y MLP para comprobar cuál de las opciones anteriores es la correcta. Además de eso, tratar de utilizar *ensemble learning* para mejorar las predicciones sin alterar artificialmente el conjunto de datos utilizando técnicas como SMOTE.
