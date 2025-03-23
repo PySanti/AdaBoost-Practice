@@ -98,3 +98,18 @@ Independientemente del caso, aca los resultados para cada variante de preprocesa
 | + Scaler; - PCA; - Outliers  	| Mejor combinacion de hiperparametros : {'alpha': 1.0, 'binarize': 0.5, 'fit_prior': True}<br>    Performance en train : 0.33<br>    Performance en test : 0.33   	| Performance boosted en train : 0.10<br>    Performance boosted en test : 0.11 	|
 | - Scaler; + PCA; - Outliers  	| Mejor combinacion de hiperparametros : {'alpha': 0.1, 'binarize': 1.0, 'fit_prior': False}<br>    Performance en train : 0.21<br>    Performance en test : 0.22  	| Performance boosted en train : 0.00<br>    Performance boosted en test : 0.00 	|
 | - Scaler; - PCA; - Outliers  	| Mejor combinacion de hiperparametros : {'alpha': 1.0, 'binarize': 0.0, 'fit_prior': True}<br>    Performance en train : 0.34<br>    Performance en test : 0.34   	| Performance boosted en train : 0.07<br>    Performance boosted en test : 0.07 	|
+
+
+
+### Regresion Logistica
+
+| Variante de preprocesamiento 	|                                                                            Naive Bayes                                                                           	| Boosted Naive Bayes                                                           	|
+|:----------------------------:	|:----------------------------------------------------------------------------------------------------------------------------------------------------------------:	|-------------------------------------------------------------------------------	|
+|  + Scaler; + PCA; + Outliers 	| Mejor combinacion de hiperparametros : {'alpha': 0.1, 'binarize': 0.0, 'fit_prior': False}<br>    Performance en train : 0.23<br>    Performance en test : 0.24  	| Performance boosted en train : 0.00<br>    Performance boosted en test : 0.00 	|
+|  + Scaler; - PCA; + Outliers 	| Mejor combinacion de hiperparametros : {'alpha': 10.0, 'binarize': 0.0, 'fit_prior': False}<br>    Performance en train : 0.23<br>    Performance en test : 0.30 	| Performance boosted en train : 0.00<br>    Performance boosted en test : 0.00 	|
+|  - Scaler; + PCA; + Outliers 	| Mejor combinacion de hiperparametros : {'alpha': 0.1, 'binarize': 1.0, 'fit_prior': False}<br>    Performance en train : 0.18<br>    Performance en test : 0.19  	| Performance boosted en train : 0.00<br>    Performance boosted en test : 0.00 	|
+|  - Scaler; - PCA; + Outliers 	| Mejor combinacion de hiperparametros : {'alpha': 10.0, 'binarize': 0.0, 'fit_prior': False}<br>    Performance en train : 0.23<br>    Performance en test : 0.30 	| Performance boosted en train : 0.00<br>    Performance boosted en test : 0.01 	|
+| + Scaler; + PCA; - Outliers  	| Mejor combinacion de hiperparametros : {'alpha': 0.1, 'binarize': 0.0, 'fit_prior': False}<br>    Performance en train : 0.25<br>    Performance en test : 0.24  	| Performance boosted en train : 0.00<br>    Performance boosted en test : 0.00 	|
+| + Scaler; - PCA; - Outliers  	| Mejor combinacion de hiperparametros : {'alpha': 1.0, 'binarize': 0.5, 'fit_prior': True}<br>    Performance en train : 0.33<br>    Performance en test : 0.33   	| Performance boosted en train : 0.10<br>    Performance boosted en test : 0.11 	|
+| - Scaler; + PCA; - Outliers  	| Mejor combinacion de hiperparametros : {'alpha': 0.1, 'binarize': 1.0, 'fit_prior': False}<br>    Performance en train : 0.21<br>    Performance en test : 0.22  	| Performance boosted en train : 0.00<br>    Performance boosted en test : 0.00 	|
+| - Scaler; - PCA; - Outliers  	| Mejor combinacion de hiperparametros : {'alpha': 1.0, 'binarize': 0.0, 'fit_prior': True}<br>    Performance en train : 0.34<br>    Performance en test : 0.34   	| Performance boosted en train : 0.07<br>    Performance boosted en test : 0.07 	|
