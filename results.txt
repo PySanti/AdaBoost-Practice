@@ -1,0 +1,104 @@
+Variante de preprocesamiento : _scaler_pca_outliers.joblib
+naive bayes
+	Mejor combinacion de hiperparametros : {'alpha': 0.1, 'binarize': 0.0, 'fit_prior': False}
+	Performance en train : 0.23
+	Performance en test : 0.24
+	Performance boosted en train : 0.00
+	Performance boosted en test : 0.00
+regresion logistica 
+	Mejor combinacion de hiperparametros : {'C': 0.01, 'class_weight': 'balanced', 'max_iter': 100, 'penalty': 'l2', 'solver': 'liblinear'}
+	Performance en train : 0.28
+	Performance en test : 0.30
+	Performance boosted en train : 0.00
+	Performance boosted en test : 0.00
+Variante de preprocesamiento : _scaler_no-pca_outliers.joblib
+naive bayes
+	Mejor combinacion de hiperparametros : {'alpha': 10.0, 'binarize': 0.0, 'fit_prior': False}
+	Performance en train : 0.23
+	Performance en test : 0.30
+	Performance boosted en train : 0.00
+	Performance boosted en test : 0.00
+regresion logistica 
+	Mejor combinacion de hiperparametros : {'C': 0.001, 'class_weight': 'balanced', 'max_iter': 100, 'penalty': 'l2', 'solver': 'saga'}
+	Performance en train : 0.24
+	Performance en test : 0.29
+	Performance boosted en train : 0.00
+	Performance boosted en test : 0.00
+Variante de preprocesamiento : _no-scaler_pca_outliers.joblib
+naive bayes
+	Mejor combinacion de hiperparametros : {'alpha': 0.1, 'binarize': 1.0, 'fit_prior': False}
+	Performance en train : 0.18
+	Performance en test : 0.19
+	Performance boosted en train : 0.00
+	Performance boosted en test : 0.00
+regresion logistica 
+	Mejor combinacion de hiperparametros : {'C': 0.001, 'class_weight': 'balanced', 'max_iter': 100, 'penalty': 'l1', 'solver': 'saga'}
+	Performance en train : 0.20
+	Performance en test : 0.22
+	Performance boosted en train : 0.00
+	Performance boosted en test : 0.00
+Variante de preprocesamiento : _no-scaler_no-pca_outliers.joblib
+naive bayes
+	Mejor combinacion de hiperparametros : {'alpha': 10.0, 'binarize': 0.0, 'fit_prior': False}
+	Performance en train : 0.23
+	Performance en test : 0.30
+	Performance boosted en train : 0.00
+	Performance boosted en test : 0.01
+regresion logistica 
+	Mejor combinacion de hiperparametros : {'C': 0.001, 'class_weight': 'balanced', 'max_iter': 500, 'penalty': 'l2', 'solver': 'saga'}
+	Performance en train : 0.23
+	Performance en test : 0.29
+	Performance boosted en train : 0.02
+	Performance boosted en test : 0.05
+Variante de preprocesamiento : _scaler_pca_no-outliers.joblib
+naive bayes
+	Mejor combinacion de hiperparametros : {'alpha': 0.1, 'binarize': 0.0, 'fit_prior': False}
+	Performance en train : 0.25
+	Performance en test : 0.24
+	Performance boosted en train : 0.00
+	Performance boosted en test : 0.00
+regresion logistica 
+	Mejor combinacion de hiperparametros : {'C': 0.01, 'class_weight': 'balanced', 'max_iter': 200, 'penalty': 'l1', 'solver': 'saga'}
+	Performance en train : 0.30
+	Performance en test : 0.30
+	Performance boosted en train : 0.00
+	Performance boosted en test : 0.00
+Variante de preprocesamiento : _scaler_no-pca_no-outliers.joblib
+naive bayes
+	Mejor combinacion de hiperparametros : {'alpha': 1.0, 'binarize': 0.5, 'fit_prior': True}
+	Performance en train : 0.33
+	Performance en test : 0.33
+	Performance boosted en train : 0.10
+	Performance boosted en test : 0.11
+regresion logistica 
+	Mejor combinacion de hiperparametros : {'C': 0.001, 'class_weight': 'balanced', 'max_iter': 500, 'penalty': 'l2', 'solver': 'saga'}
+	Performance en train : 0.34
+	Performance en test : 0.34
+	Performance boosted en train : 0.17
+	Performance boosted en test : 0.17
+Variante de preprocesamiento : _no-scaler_pca_no-outliers.joblib
+naive bayes
+	Mejor combinacion de hiperparametros : {'alpha': 0.1, 'binarize': 1.0, 'fit_prior': False}
+	Performance en train : 0.21
+	Performance en test : 0.22
+	Performance boosted en train : 0.00
+	Performance boosted en test : 0.00
+regresion logistica 
+	Mejor combinacion de hiperparametros : {'C': 0.001, 'class_weight': 'balanced', 'max_iter': 500, 'penalty': 'l1', 'solver': 'saga'}
+	Performance en train : 0.23
+	Performance en test : 0.23
+	Performance boosted en train : 0.00
+	Performance boosted en test : 0.00
+Variante de preprocesamiento : _no-scaler_no-pca_no-outliers.joblib
+naive bayes
+	Mejor combinacion de hiperparametros : {'alpha': 1.0, 'binarize': 0.0, 'fit_prior': True}
+	Performance en train : 0.34
+	Performance en test : 0.34
+	Performance boosted en train : 0.07
+	Performance boosted en test : 0.07
+regresion logistica 
+	Mejor combinacion de hiperparametros : {'C': 0.001, 'class_weight': 'balanced', 'max_iter': 100, 'penalty': 'l2', 'solver': 'liblinear'}
+	Performance en train : 0.33
+	Performance en test : 0.33
+	Performance boosted en train : 0.16
+	Performance boosted en test : 0.17

@@ -13,6 +13,7 @@ def show_results(df_list : list):
     print("________________________________________")
 
 def basic_preprocess(df, target, scaler=False, pca=False, outliers=False):
+    df[target] = df[target].map({"Yes":1, "No" : 0})
     cat_columns = df.drop(target, axis=1).select_dtypes(include="object").columns.tolist()
     not_cat_columns = df.drop(target, axis=1).select_dtypes(exclude="object").columns.tolist()
 
@@ -24,13 +25,11 @@ def basic_preprocess(df, target, scaler=False, pca=False, outliers=False):
         ("features_selection", BestFeatures(threshold=0.01, classification=True))
     ])
 
-    show_results([df_train, df_val, df_test])
 
     X_train = pd.DataFrame(pipe.fit_transform(df_train.drop(target, axis=1), df_train[target]), index=df_train.index)
     X_val   = pd.DataFrame(pipe.transform(df_val.drop(target, axis=1)), index=df_val.index)
     X_test  = pd.DataFrame(pipe.transform(df_test.drop(target, axis=1)), index=df_test.index)
 
-    show_results([X_train, X_val, X_test])
 
     if scaler or pca:
         steps = []
@@ -49,7 +48,6 @@ def basic_preprocess(df, target, scaler=False, pca=False, outliers=False):
         print(f"Deleted samples : {len_1 - len(X_train)}/{len_1} ({(len_1 - len(X_train))*100/len_1})")
 
 
-    show_results([X_train, X_val, X_test])
 
     df_train = pd.concat([X_train, df_train[target]], axis=1)
     df_val = pd.concat([X_val, df_val[target]], axis=1)
