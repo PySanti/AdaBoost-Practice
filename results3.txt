@@ -1,9 +1,0 @@
-nb
-	Performance en train : 0.67
-	Performance en test : 0.32
-rf
-	Performance en train : 0.90
-	Performance en test : 0.30
-svc
-	Performance en train : 0.76
-	Performance en test : 0.31
