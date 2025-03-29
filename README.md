@@ -121,10 +121,54 @@ Importante: destacar que las precisiones son el *f1_score* para la clase positiv
 
 Cómo vemos, de por sí ninguno de los algoritmos por separado logró hacer buenas predicciones, a qué se debe esto? Esta situación puede estar siendo causada por varias razones:
 
-1- Los algoritmos, al construir límites de decisión lineales, no son capaces de capturar los patrones entre los datos (la más probable).
+1- Los algoritmos, al construir límites de decisión lineales, no son capaces de capturar los patrones entre los datos.
 
 2- Está habiendo algún error importante en el proceso de preprocesamiento (menos probable).
 
 3- El hecho de que el conjunto de datos esté desequilibrado afecta negativamente a estos algoritmos concretos. (muy probable)
 
 En un caso de uso real, lo primero que haría sería implementar SVC y MLP para comprobar cuál de las opciones anteriores es la correcta. Además de eso, tratar de utilizar *ensemble learning* para mejorar las predicciones sin alterar artificialmente el conjunto de datos utilizando técnicas como SMOTE.
+
+Ademas de lo anterior, AdaBoost esta generando resultados inesperadamente bajos. La razon de esto seguramente sea que los algoritmos Naive Bayes y Regresion Logistica no son los mas apropiados para utilizar con AdaBoost al no ser lo "suficientemente debiles".
+
+
+Para realizar un estudio mas completo, se haran las siguientes acciones:
+
+1- Volver a estudiar los algoritmos anteriores eliminando variantes de preprocesamiento inutiles (PCA y Outliers) y reemplazar por tenicas de manejo de desbalance (SMOTE o ADASYN).
+
+2- Por cada algoritmo, se realizara un proceso de seleccion de modelo para su version Boosted tambien.
+
+3- Aparte, se generara otra matriz de estudio para analizar el comportamiento de Stump Forest, un algoritmo de AdaBoost con Arboles de decision (su implementacion mas comun), esto para comparar los resultados anteriores.
+
+
+Después de realizar las acciones anteriores, concluimos lo siguiente:
+
+Con respecto a la implementación de SMOTE y ADASYN, ambas lograron resultados similares, mejorando mucho el rendimiento de los modelos para el conjunto de entrenamiento, pero no mejorándolo para nada para el conjunto de test.
+
+Esto nos llevó a pensar que la única alternativa que podría estar causando problemas de precisión es que simplemente los algoritmos que estamos utilizando (Naive Bayes y Regresión Logística) al construir límites de decisión lineales, no están siendo capaces de capturar patrones complejos en el dataset.
+
+La teoria anterior fue refutada cuando probamos utilizando SVC, el cual no dio resultados mejores aun utilizando kernel polinomico. 
+
+Por último, el algoritmo forest stumps funcionó bastante bien, en algunos casos hasta mejor que Naive Bayes y Regresion Logistica. Acá los resultados:
+
+
+#### Resultados base
+
+|  Preprocesamiento 	|                               NB                              	|                               LR                              	|                              SVC                              	|
+|:-----------------:	|:-------------------------------------------------------------:	|:-------------------------------------------------------------:	|:-------------------------------------------------------------:	|
+| + Scaler; + SMOTE 	| Performance en train : 0.72<br>    Performance en test : 0.33 	| Performance en train : 0.74<br>    Performance en test : 0.33 	| Performance en train : 0.76<br>    Performance en test : 0.31 	|
+| + Scaler; - SMOTE 	| Performance en train : 0.33<br>    Performance en test : 0.33 	| Performance en train : 0.34<br>    Performance en test : 0.34 	|                               -                               	|
+| - Scaler; + SMOTE 	| Performance en train : 0.72<br>    Performance en test : 0.33 	| Performance en train : 0.74<br>    Performance en test : 0.33 	|                               -                               	|
+| - Scaler; - SMOTE 	| Performance en train : 0.33<br>    Performance en test : 0.33 	| Performance en train : 0.34<br>    Performance en test : 0.34 	|                               -                               	|
+
+#### Resultados Boosted
+
+|  Preprocesamiento 	|                           Boosted NB                          	|                           Boosted LR                          	|                               FS                              	|
+|:-----------------:	|:-------------------------------------------------------------:	|:-------------------------------------------------------------:	|:-------------------------------------------------------------:	|
+| + Scaler; + SMOTE 	| Performance en train : 0.83<br>    Performance en test : 0.33 	| Performance en train : 0.73<br>    Performance en test : 0.30 	| Performance en train : 0.86<br>    Performance en test : 0.34 	|
+| + Scaler; - SMOTE 	| Performance en train : 0.12<br>    Performance en test : 0.12 	| Performance en train : 0.16<br>    Performance en test : 0.16 	| Performance en train : 0.16<br>    Performance en test : 0.16 	|
+| - Scaler; + SMOTE 	| Performance en train : 0.82<br>    Performance en test : 0.33 	| Performance en train : 0.74<br>    Performance en test : 0.31 	| Performance en train : 0.86<br>    Performance en test : 0.34 	|
+| - Scaler; - SMOTE 	| Performance en train : 0.12<br>    Performance en test : 0.12 	| Performance en train : 0.17<br>    Performance en test : 0.17 	| Performance en train : 0.16<br>    Performance en test : 0.16 	|
+
+
+Dejaremos este proyecto en este punto y mas adelante lo retomaremos para tratar de averiguar la razon de estos problemas.

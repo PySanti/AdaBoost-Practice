@@ -1,4 +1,7 @@
 import numpy as np
+from sklearn.linear_model import LogisticRegression
+from sklearn.naive_bayes import BernoulliNB
+from sklearn.tree import DecisionTreeClassifier
 
 param_grid_rf = {  
     'n_estimators': np.arange(50, 351, 50),
@@ -26,3 +29,34 @@ param_grid_lr = {
     'class_weight': [None, 'balanced']
 }
 
+base_ada_param_grid = {
+    'n_estimators': [50, 100, 150, 200],  # Número de estimadores  
+    'learning_rate': [0.001, 0.01, 0.1, 1],  # Tasa de aprendizaje  
+}
+
+
+param_grid_b_bnb = {  
+    **base_ada_param_grid,
+    'estimator': [BernoulliNB()],  # Puedes probar otros también  
+}
+param_grid_b_lr = {  
+    **base_ada_param_grid,
+    'estimator': [LogisticRegression()],  # Puedes probar otros también  
+}
+
+param_grid_fs = {  
+    **base_ada_param_grid,
+    'estimator': [DecisionTreeClassifier(max_depth=1)]
+}
+
+param_grid_rf = {  
+    'n_estimators': [250],  # Número de árboles en el bosque  
+    'max_depth': [10, 20, 30],  # Profundidad máxima de los árboles  
+    'min_samples_split': [7],  # Mínimo de muestras para dividir un nodo  
+    'min_samples_leaf': [4],    # Mínimo de muestras en una hoja  
+    'max_features': ['log2']  # Características a considerar en la división  
+}  
+param_grid_svc = {  
+    'kernel': ['rbf'],  # Tipos de kernel  
+    'gamma': ['auto'],  # Coeficiente del kernel  
+}  

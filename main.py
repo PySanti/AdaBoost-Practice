@@ -1,66 +1,37 @@
 import pandas as pd
-from scipy.special import basic
 from utils.basic_preprocess import basic_preprocess
-from utils.generate_filename import generate_filename
-from sklearn.ensemble import RandomForestClassifier
-from utils.best_hp import best_hp
 from sklearn.naive_bayes import BernoulliNB
-from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import GridSearchCV
-from utils.constants import (
-    param_grid_bnb,
-    param_grid_rf,
-    param_grid_lr
-)
-from sklearn.metrics import make_scorer, f1_score
 from utils.get_model_performance import get_model_performance
-from utils.get_model_boosted_performance import get_model_boosted_performance
-
-
-
-
+from sklearn.svm import SVC
+from utils.constants import param_grid_bnb, param_grid_lr, param_grid_b_lr, param_grid_b_bnb, param_grid_fs, param_grid_rf, param_grid_svc
+from sklearn.ensemble import RandomForestClassifier
 target = "HeartDisease"
 
 
-for outliers in [True, False]:
-    for scaler in [True, False]:
-        for pca in [True, False]:
-            preprocessing_variant_name = generate_filename(scaler, pca, outliers)
-            print("~~~~~~~~~~~")
-            print(f"Calculos para variante de preprocesamiento : {preprocessing_variant_name}")
-            [df_train, df_test, df_val] = basic_preprocess(pd.read_csv("./data/data.csv"), target,scaler, pca, outliers)
-            [nb_best_hp, lr_best_hp] = best_hp(df_train, target)
-
-            [nb_train_performance, nb_test_performance] = get_model_performance(BernoulliNB, df_train, df_test, nb_best_hp, target)
-            [lr_train_performance, lr_test_performance] = get_model_performance(LogisticRegression, df_train, df_test, lr_best_hp, target)
-            [nb_b_train_performance, nb_b_test_performance] = get_model_boosted_performance(BernoulliNB, df_train, df_test, nb_best_hp, target)
-            [lr_b_train_performance, lr_b_test_performance] = get_model_boosted_performance(LogisticRegression, df_train, df_test, lr_best_hp, target)
 
 
+[df_train, df_test] = basic_preprocess(pd.read_csv("./data/data.csv"), target)
+print(df_train[target].value_counts())
 
-            results = {
-                "naive bayes" : {
-                    "hp" : nb_best_hp, 
-                    "train_p" : nb_train_performance, 
-                    "test_p" : nb_test_performance, 
-                    "train_p_b" : nb_b_train_performance, 
-                    "test_p_b" : nb_b_test_performance, 
-                },
-                "regresion logistica " : {
-                    "hp" : lr_best_hp, 
-                    "train_p" : lr_train_performance, 
-                    "test_p" : lr_test_performance,
-                    "train_p_b" : lr_b_train_performance,
-                    "test_p_b" : lr_b_test_performance
+results = {
+    "nb" : {},
+    "rf" : {},
+    "svc" : {}
+    #"lr" : {},
+    #"nbb":{},
+    #"lrb":{},
+    #"fs" : {}
+}
+[results["nb"]["train"], results["nb"]["test"]] = get_model_performance(BernoulliNB, param_grid_bnb, df_train, df_test, target)
+[results["rf"]["train"], results["rf"]["test"]] = get_model_performance(RandomForestClassifier, param_grid_rf, df_train, df_test, target)
+[results["svc"]["train"], results["svc"]["test"]] = get_model_performance(SVC, param_grid_svc, df_train, df_test, target)
+#[results["lr"]["train"], results["lr"]["test"]] = get_model_performance(LogisticRegression,param_grid_lr,df_train,df_test,target)
+#[results["nbb"]["train"], results["nbb"]["test"]] = get_model_performance(AdaBoostClassifier,param_grid_b_bnb,df_train,df_test,target)
+#[results["lrb"]["train"], results["lrb"]["test"]] = get_model_performance(AdaBoostClassifier,param_grid_b_lr,df_train,df_test,target)
+#[results["fs"]["train"], results["fs"]["test"]] = get_model_performance(AdaBoostClassifier,param_grid_fs,df_train,df_test,target)
 
-                },
-            }
-            with open("./results.txt", "a") as f:
-                f.write(f"Variante de preprocesamiento : {preprocessing_variant_name}\n")
-                for k,v in results.items():
-                    f.write(f"{k}\n")
-                    f.write(f"\tMejor combinacion de hiperparametros : {v['hp']}\n")
-                    f.write(f"\tPerformance en train : {v['train_p']:.2f}\n")
-                    f.write(f"\tPerformance en test : {v['test_p']:.2f}\n")
-                    f.write(f"\tPerformance boosted en train : {v['train_p_b']:.2f}\n")
-                    f.write(f"\tPerformance boosted en test : {v['test_p_b']:.2f}\n")
+with open("./results3.txt", "a") as f:
+    for k,v in results.items():
+        f.write(f"{k}\n")
+        f.write(f"\tPerformance en train : {v['train']:.2f}\n")
+        f.write(f"\tPerformance en test : {v['test']:.2f}\n")
